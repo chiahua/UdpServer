@@ -1,0 +1,45 @@
+group 'idv.wallace.fun'
+version '1.0-SNAPSHOT'
+
+
+buildscript {
+    ext {
+        springBootVersion = '1.5.9.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile 'org.mockito:mockito-all:1.10.19'
+    compile 'org.springframework.boot:spring-boot-starter-web:1.5.9.RELEASE'
+    compile 'org.springframework.integration:spring-integration-core'
+    compile 'org.springframework.integration:spring-integration-ip'
+    compile 'org.springframework.integration:spring-integration-java-dsl'
+    compile 'com.google.code.gson:gson:2.8.5'
+    compile 'com.google.guava:guava:19.0'
+}
+
+
+
+bootRepackage {
+    mainClass = 'idv.wallace.fun.UdpApplication'
+}
